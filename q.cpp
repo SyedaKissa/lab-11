@@ -56,21 +56,33 @@ int main() {
 //Screen + another file
 
 //ASCI 0=48,  9=57
- char c;
+
+ char buffer[100];
  int j = 0;
+
  int i;
+
  for (i=0; i<100; i++){
- 	c = map1[i];
- 	if(c >= 48 && c <= 57 ){
+ 	if(map1[i] >= 48 && map1[i] <= 57 ){
  		cout<<map1[i];
- 		map2[j] = c;
- 		j++;
+ 		buffer[j] = map1[i];
+ 		j++;		
  	} 	 
  }
- cout<<"Now map2" <<endl;
+
+ buffer[j] = '\0';
+
+ cout << endl << "Buffer : "<< buffer << endl;
+ cout<<"Now write in map2" <<endl;
 
  for(i = 0; i < 100; i++){
- 	cout<<map2[i];
+ 	if (buffer[i] != '\0'){
+ 		map2[i] = buffer[i]; 		
+ 	}
+ 	else{
+ 		break;
+ 	}
+ 	
  }
  cout<<endl;
 
